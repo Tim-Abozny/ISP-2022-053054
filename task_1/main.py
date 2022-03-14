@@ -53,14 +53,14 @@ def get_dict(text_from_file):
 
 def print_counts(my_dict, size_of_sent):
     median_count = median_words_count(size_of_sent)
-    print('--------------')
+    print('-' * 14)
     print("average word count ---->", median_count)
     average_count = average_words_count(my_dict, len(size_of_sent))
     print("median word count  ---->", average_count)
-    print('--------------')
+    print('-' * 14)
     for key, value in my_dict.items():
         print("{0}: {1}".format(key, value))
-    print('--------------')
+    print('-' * 14)
 
 
 def sort_list(my_dict):
@@ -81,13 +81,14 @@ def start_analyze(n_symbol, m_top):
     size_of_sent = sentence_size(text_from_file)
     print_counts(my_dict, size_of_sent)
     to_print_list = sort_list(my_dict)
+
     for i in range(len(to_print_list), 0, -1):
         if int(m_top) > 0 and len(to_print_list[i - 1]) >= int(n_symbol):
             for j in range(0, int(n_symbol)):
                 print(to_print_list[i - 1][j], end="")
             print("")
             m_top -= 1
-    print('--------------')
+    print('-' * 14)
 
 
 def start_program():
