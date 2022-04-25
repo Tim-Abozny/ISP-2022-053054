@@ -1,0 +1,6 @@
+a = 1
+d = "here is some test"
+e = [ "here", "is", "some", "array",]
+
+[c]
+b = 2
