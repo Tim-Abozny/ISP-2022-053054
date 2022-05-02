@@ -14,7 +14,7 @@ def categories(request, cat_id):
 
 def archive(request, year):
     if int(year) > 2022:
-        return redirect('/')
+        return redirect('home', permanent=True)
 
     return HttpResponse(f"<h1>Archive by years</h1><p>{year}</p>")
 
