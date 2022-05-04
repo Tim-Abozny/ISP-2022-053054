@@ -1,21 +1,69 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
+	<title>{{title}}</title>
+	<link type="text/css" href="{% static 'women/css/styles.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="shortcut icon" href="{% static 'women/images/main.ico' %}" type="image/x-icon"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    {% block mainmenu %}
-        <ul>
-            {% for m in menu %}
-                <li>
-                    {{ m }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endblock mainmenu %}
+<table class="table-page" border=0 cellpadding="0" cellspacing="0">
+<tr><td valign=top>
+{% block mainmenu %}
+		<div class="header">
+			<ul id="mainmenu" class="mainmenu">
+			<li class="logo"><a href="#"><div class="logo"></div></a></li>
+{% for m in menu %}
+	{% if not forloop.last %}
+			<li><a href="#">{{m.title}}</a></li>
+	{% else %}
+			<li class="last"><a href="#">{{m.title}}</a></li>
+	{% endif %}
+{% endfor %}
+			</ul>
+			<div class="clear"></div>
+		</div>
+{% endblock mainmenu %}
 
-    {% block content %}
-    {% endblock %}
+
+<table class="table-content" border=0 cellpadding="0" cellspacing="0">
+<tr>
+<!-- Sidebar left -->
+	<td valign="top" class="left-chapters">
+	<ul id="leftchapters">
+		<li class="selected">All categories</li>
+		<li><a href="#">Actresses</a></li>
+		<li><a href="#">Singers</a></li>
+		<li><a href="#">Sportswomen</a></li>
+		<li class="share">
+		<p>Our channel</p>
+		<a class="share-yt" href="https://www.youtube.com/c/marvel" target="_blank" rel="nofollow"></a>
+		</li>
+	</ul>
+</td>
+<!-- end Sidebar -->
+<td valign="top" class="content">
+	<!-- breadcrumbs -->
+	{% block breadcrumbs %}
+	{% endblock %}
+
+<!-- content block -->
+	<div class="content-text">
+{% block content %}
+{% endblock %}
+	</div>
+<!-- end content block -->
+
+</td></tr></table>
+</td></tr>
+<!-- Footer -->
+<tr><td valign=top>
+	<div id="footer">
+		<p>&copy; 2022 Partial or full copying information from this site is prohibited.</p>
+	</div>
+</td></tr></table>
+<!-- end footer and page -->
 </body>
 </html>
